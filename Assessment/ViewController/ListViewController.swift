@@ -13,6 +13,7 @@ import Moya
 import ObjectMapper
 import Foundation
 
+/// Description
 class ListViewController: UIViewController {
     
     var refreshControl = UIRefreshControl()
@@ -33,6 +34,8 @@ class ListViewController: UIViewController {
         
     }
 }
+
+ 
 //MARK:- UITableView Methods
 extension ListViewController: UITableViewDelegate, UITableViewDataSource{
     
@@ -42,21 +45,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource{
        }
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          // let cell = tableView.dequeueReusableCell(withIdentifier: "InfoDetailsCell", for: indexPath)
            let cell = tableView.dequeueReusableCell(withIdentifier: "InfoDetailsCell", for: indexPath) as! InfoTableViewCell
-
            
            cell.contact = listdata[indexPath.row]
-         //  cell.detailTextLabel?.text = "Helloalslksdfsdfskldflsdflflsdlfdxcvxcksdlfslf;k;sd;kldfgdnfgldl"
-
-           //cell.imageView?.image = UIImage(named: "hello")
-
            return cell
-       }
-       // UITableViewAutomaticDimension calculates height of label contents/text
-       func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           // Swift 4.2 onwards
-           return UITableView.automaticDimension
        }
     
 }
@@ -72,38 +64,29 @@ extension ListViewController{
         
         configureTableView()
         
-        
-               //navigationItem.title = "About Canada"
-               //Pull To Refresh
+            //Pull To Refresh
                refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
                refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
                detaillistTableview.addSubview(refreshControl)
 
     }
-    
     func configureTableView() {
-        //Constain for Tableview
-        detaillistTableview.translatesAutoresizingMaskIntoConstraints = false
-        
-        detaillistTableview.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        detaillistTableview.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        detaillistTableview.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        detaillistTableview.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        
-        detaillistTableview.delegate = self
         detaillistTableview.dataSource = self
-        
-           detaillistTableview.rowHeight = UITableView.automaticDimension
-           detaillistTableview.estimatedRowHeight = UITableView.automaticDimension
-
-        
+        detaillistTableview.estimatedRowHeight = 100
+        detaillistTableview.rowHeight = UITableView.automaticDimension
         detaillistTableview.register(InfoTableViewCell.self, forCellReuseIdentifier: "InfoDetailsCell")
         
+        view.addSubview(detaillistTableview)
+        detaillistTableview.translatesAutoresizingMaskIntoConstraints = false
+        detaillistTableview.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        detaillistTableview.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        detaillistTableview.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        detaillistTableview.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
+
     @objc func refresh(sender:AnyObject) {
        // Code to refresh table view
         load()
-        //detaillistTableview.reloadData()
         refreshControl.endRefreshing()
     }
     
@@ -125,11 +108,11 @@ extension ListViewController{
                     let responseStrInISOLatin = String(data: response.data, encoding: String.Encoding.isoLatin1)
 
                     guard let modifiedDataInUTF8Format = responseStrInISOLatin?.data(using: String.Encoding.utf8) else {
-                         print("could not convert data to UTF-8 format")
+                        // print("could not convert data to UTF-8 format")
                          return
                     }
                     let responseJSONDict = try JSONSerialization.jsonObject(with: modifiedDataInUTF8Format, options: .mutableContainers) as? [String:Any]
-                                   print(responseJSONDict as Any)
+                                 //  print(responseJSONDict as Any)
                     let dataaaa = responseJSONDict?["rows"] as! NSArray
                     self.navigationtitle = responseJSONDict?["title"] as? String as NSString?
                     self.setupNavBar()
@@ -138,7 +121,7 @@ extension ListViewController{
                         if popular.count != 0 {
                             self.listdata = [ListData]()
                             self.listdata = popular
-                            print(self.listdata)
+                           // print(self.listdata)
                             self.detaillistTableview.reloadData()
                         }
                     }
@@ -146,7 +129,7 @@ extension ListViewController{
                     print(error)
                 }
                 break
-            case let .failure(error):
+            case .failure(_):
                 //print(Strings.failure,error)
                 break
             }

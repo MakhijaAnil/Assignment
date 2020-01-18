@@ -21,30 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
           window?.windowScene = windowScene
-          //window?.rootViewController = ListViewController()
         window?.rootViewController = UINavigationController(rootViewController: ListViewController())
 
           window?.makeKeyAndVisible()
         
-       
-        
-//        if let windowScene = scene as? UIWindowScene {
-//            let window = UIWindow(windowScene: windowScene)
-//            self.window = window
-//            SceneDelegate.instance = self
-//            setRootScene()
-//        }
-
-        
     }
-//    func setRootScene(){
-//        let viewModel = RecipeInfoViewModel()
-//        viewModel.load()
-//      //  let feedsView = FeedsView(viewModel: viewModel)
-//        //window?.rootViewController = UIHostingController(rootView: feedsView)
-//        window?.makeKeyAndVisible()
-//
-//    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

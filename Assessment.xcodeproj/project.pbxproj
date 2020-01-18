@@ -15,7 +15,6 @@
 		04618DF023C06B45001DC05E /* AssessmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618DEF23C06B45001DC05E /* AssessmentUITests.swift */; };
 		04618DFE23C06FF6001DC05E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618DFD23C06FF6001DC05E /* ListViewController.swift */; };
 		04618E0023C07FDD001DC05E /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618DFF23C07FDD001DC05E /* InfoTableViewCell.swift */; };
-		04618E0923C0A90F001DC05E /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618E0823C0A90F001DC05E /* RecipeInfo.swift */; };
 		04618E0D23C0AA2D001DC05E /* RecipesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618E0C23C0AA2D001DC05E /* RecipesServices.swift */; };
 		04618E1023C0AADA001DC05E /* AppConsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618E0F23C0AADA001DC05E /* AppConsts.swift */; };
 		04618E1223C0AAE3001DC05E /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618E1123C0AAE3001DC05E /* Messages.swift */; };
@@ -60,7 +59,6 @@
 		04618DF123C06B45001DC05E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04618DFD23C06FF6001DC05E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		04618DFF23C07FDD001DC05E /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
-		04618E0823C0A90F001DC05E /* RecipeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
 		04618E0C23C0AA2D001DC05E /* RecipesServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesServices.swift; sourceTree = "<group>"; };
 		04618E0F23C0AADA001DC05E /* AppConsts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConsts.swift; sourceTree = "<group>"; };
 		04618E1123C0AAE3001DC05E /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			children = (
 				04618E0A23C0A9E6001DC05E /* Utils */,
 				04618E0523C0A6FE001DC05E /* Model */,
-				04618E0423C0A6F1001DC05E /* ViewModel */,
 				04618DDB23C06B45001DC05E /* Info.plist */,
 				04618E0323C09DBD001DC05E /* ViewController */,
 				04618E0223C09D89001DC05E /* Cell */,
@@ -189,18 +186,10 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		04618E0423C0A6F1001DC05E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		04618E0523C0A6FE001DC05E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				04618E2123C10017001DC05E /* ListData.swift */,
-				04618E0823C0A90F001DC05E /* RecipeInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -495,7 +484,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04618E1423C0ADD3001DC05E /* WSParams.swift in Sources */,
-				04618E0923C0A90F001DC05E /* RecipeInfo.swift in Sources */,
 				04618E2223C10017001DC05E /* ListData.swift in Sources */,
 				04618E0023C07FDD001DC05E /* InfoTableViewCell.swift in Sources */,
 				04618DCE23C06B42001DC05E /* AppDelegate.swift in Sources */,
