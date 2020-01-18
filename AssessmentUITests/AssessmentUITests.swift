@@ -27,6 +27,21 @@ class AssessmentUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+               super.setUp()
+               print(app.debugDescription)
+
+               
+               let table = app.tables.element
+               XCTAssertTrue(table.exists)
+
+               let cell = table.cells.element(boundBy: 2)
+               XCTAssertTrue(cell.exists)
+               let indexedText = cell.staticTexts.element
+               XCTAssertTrue(indexedText.exists)
+               
+               
+               
+               XCTAssertTrue(app.tables.element.cells.element(boundBy: 2).exists)
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
