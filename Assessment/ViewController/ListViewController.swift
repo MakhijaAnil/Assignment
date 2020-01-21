@@ -112,19 +112,20 @@ extension ListViewController{
                          return
                     }
                     let responseJSONDict = try JSONSerialization.jsonObject(with: modifiedDataInUTF8Format, options: .mutableContainers) as? [String:Any]
-                                 //  print(responseJSONDict as Any)
-                    let dataaaa = responseJSONDict?["rows"] as! NSArray
-                    self.navigationtitle = responseJSONDict?["title"] as? String as NSString?
-                    self.setupNavBar()
-                    if let popular = Mapper<ListData>().mapArray(JSONObject:dataaaa) {
-                        
-                        if popular.count != 0 {
-                            self.listdata = [ListData]()
-                            self.listdata = popular
-                           // print(self.listdata)
-                            self.detaillistTableview.reloadData()
+                    if let datainfo = responseJSONDict?["rows"]{
+                        self.navigationtitle = responseJSONDict?["title"] as? String as NSString?
+                        self.setupNavBar()
+                        if let popular = Mapper<ListData>().mapArray(JSONObject:datainfo) {
+                            
+                            if popular.count != 0 {
+                                self.listdata = [ListData]()
+                                self.listdata = popular
+                               // print(self.listdata)
+                                self.detaillistTableview.reloadData()
+                            }
                         }
                     }
+                    
                 }catch let error{
                     print(error)
                 }

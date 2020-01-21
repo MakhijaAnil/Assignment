@@ -20,11 +20,11 @@ class InfoTableViewCell: UITableViewCell {
                     nameLabel.text = " Title "
                 }
                 
-                let pimage = UIImage(named: "no-photo")
+                //Set placeholder Image
+                profileImageView.image = UIImage(named: "no-photo")
                 if let image = contactItem.imageHref {
-                    let imageURL = URL(string: image as String)
                     profileImageView.kf.indicatorType = .activity
-                    profileImageView.kf.setImage(with: imageURL, placeholder: pimage)
+                    profileImageView.kf.setImage(with: URL(string: image as String), placeholder: UIImage(named: "no-photo"))
                 }
                 if let detailinfo = contactItem.description {
                     jobTitleDetailedLabel.text = " \(detailinfo) "
